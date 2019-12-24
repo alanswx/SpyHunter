@@ -1183,37 +1183,37 @@ port map(
 );
 
 -- sprite graphics ROM A7-A8
---sprite_graphics_1 : entity work.spy_hunter_sp_bits_1
---port map(
--- clk  => clock_vidn,
--- addr => sp_code_line(14 downto 0), -- only 14 bits for Discs of Tron
--- data => sp_graphx1_do
---);
+sprite_graphics_1 : entity work.spy_hunter_sp_bits_1
+port map(
+ clk  => clock_vidn,
+ addr => sp_code_line(14 downto 0), -- only 14 bits for Discs of Tron
+ data => sp_graphx1_do
+);
 
 
 -- sprite graphics ROM A5-A6
---sprite_graphics_2 : entity work.spy_hunter_sp_bits_2
---port map(
--- clk  => clock_vidn,
--- addr => sp_code_line(14 downto 0), -- only 14 bits for Discs of Tron
--- data => sp_graphx2_do
---);
+sprite_graphics_2 : entity work.spy_hunter_sp_bits_2
+port map(
+ clk  => clock_vidn,
+ addr => sp_code_line(14 downto 0), -- only 14 bits for Discs of Tron
+ data => sp_graphx2_do
+);
 
 -- sprite graphics ROM A3-A4
---sprite_graphics_3 : entity work.spy_hunter_sp_bits_3
---port map(
--- clk  => clock_vidn,
--- addr => sp_code_line(14 downto 0), -- only 14 bits for Discs of Tron
--- data => sp_graphx3_do
---);
+sprite_graphics_3 : entity work.spy_hunter_sp_bits_3
+port map(
+ clk  => clock_vidn,
+ addr => sp_code_line(14 downto 0), -- only 14 bits for Discs of Tron
+ data => sp_graphx3_do
+);
 
 -- sprite graphics ROM A1-A2
---sprite_graphics_4 : entity work.spy_hunter_sp_bits_4
---port map(
--- clk  => clock_vidn,
--- addr => sp_code_line(14 downto 0), -- only 14 bits for Discs of Tron
--- data => sp_graphx4_do
---);
+sprite_graphics_4 : entity work.spy_hunter_sp_bits_4
+port map(
+ clk  => clock_vidn,
+ addr => sp_code_line(14 downto 0), -- only 14 bits for Discs of Tron
+ data => sp_graphx4_do
+);
 
 
 -- Spy hunter sound board 

@@ -280,7 +280,8 @@ wire [3:0] b;
 // 512x480
 //arcade_rotate_fx #(224,596,12) arcade_video
 //arcade_rotate_fx #(512,480,6) arcade_video
-arcade_rotate_fx #(480,512,6) arcade_video
+//arcade_rotate_fx #(480,512,6) arcade_video
+arcade_fx #(480,6) arcade_video
 //arcade_rotate_fx #(289,224,12) arcade_video
 //arcade_rotate_fx #(224,596,8) arcade_video
 (
@@ -297,7 +298,7 @@ arcade_rotate_fx #(480,512,6) arcade_video
         .VSync(vs),
 
         .fx(status[5:3]),
-        .no_rotate(status[2])
+        //.no_rotate(status[2])
 );
 
 assign AUDIO_S = 0;
