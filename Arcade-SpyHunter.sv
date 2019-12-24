@@ -99,7 +99,7 @@ assign HDMI_ARY = status[1] ? 8'd9  : status[2] ? 8'd20 : 8'd21;
 
 `include "build_id.v" 
 localparam CONF_STR = {
-	"A.KICKMAN;;",
+	"A.SPYHUNTER;;",
 	"F,rom;", // allow loading of alternate ROMs
 	"-;",
 	"O1,Aspect Ratio,Original,Wide;",
@@ -276,29 +276,38 @@ wire hs, vs;
 wire [3:0] r,g;
 wire [3:0] b;
 
+reg ce_pix; // 10M
+always @(posedge clk_80M) begin
+	reg [2:0] div;
+	div <= div + 1'd1;
+	ce_pix <= !div;
+end
 
 // 512x480
 //arcade_rotate_fx #(224,596,12) arcade_video
 //arcade_rotate_fx #(512,480,6) arcade_video
 //arcade_rotate_fx #(480,512,6) arcade_video
-arcade_fx #(480,6) arcade_video
+//arcade_fx #(480,6) arcade_video
+// 247x958
 //arcade_rotate_fx #(289,224,12) arcade_video
-//arcade_rotate_fx #(224,596,8) arcade_video
+arcade_rotate_fx #(247,489,6) arcade_video
+//arcade_rotate_fx #(512,489,6) arcade_video
 (
         .*,
 
-        .clk_video(clk_sys),
-        //.clk_video(clk_80m),
-        .ce_pix(ce_vid),
-		  //.ce_pix(clk_sys),
-        .RGB_in({r[3:2],g[3:2],b[3:2]}),
+        //.clk_video(clk_sys),
+        .clk_video(clk_80M),
+        //.ce_pix(ce_vid),
+        //.RGB_in({r,g,b}),
+	.RGB_in({r[3:2],g[3:2],b[3:2]}),
+        //.RGB_in({r,g,b}),
         .HBlank(hblank),
         .VBlank(vblank),
         .HSync(hs),
         .VSync(vs),
 
         .fx(status[5:3]),
-        //.no_rotate(status[2])
+        .no_rotate(status[2])
 );
 
 assign AUDIO_S = 0;
